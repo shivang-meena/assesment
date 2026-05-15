@@ -7,6 +7,7 @@ const app=express();
 
 import route from "./routes/userRoutes.js";
 
+console.log("MONGO_URI:", process.env.MONGO_URI);
 app.use(cors({
     origin: "http://localhost:5173"
 }));
