@@ -7,7 +7,7 @@ export default function Registration() {
     const navigate = useNavigate();
     const location = useLocation();
      const { emailid } = location.state || { emailid: "" };
-     console.log(emailid+" this is email id ");
+    
   const [email, setEmail] = useState(emailid);
   const [name, setname] = useState("");
   const [password, setpassword] = useState("");
@@ -17,7 +17,7 @@ export default function Registration() {
     e.preventDefault();
   
           try {
-        const res=await fetch("http://localhost:3000/user/registeration",{
+        const res=await fetch("https://assesment-h8vv.onrender.com/user/registeration",{
             method:"POST",
             headers: {
         "Content-Type": "application/json"  
@@ -26,11 +26,11 @@ export default function Registration() {
         });
 
         const data=await res.json();
-        console.log(data);
+    
         if(data?.success===true){
       setMsg("registered");
          navigate("/Login");
-            console.log("yes verubfued");
+          
         }
         if (data?.success===false) {
       setMsg(data?.message);

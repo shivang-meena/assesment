@@ -45,7 +45,7 @@ async  function handleoptsend(e){
       if (email.trim()!=="") {
         setstep(1);
          try {
-        const res=await fetch("http://localhost:3000/user/otp",{
+        const res=await fetch("https://assesment-h8vv.onrender.com/user/otp",{
             method:"POST",
             headers: {
         "Content-Type": "application/json"  
@@ -54,7 +54,7 @@ async  function handleoptsend(e){
         });
 
         const data=await res.json();
-        console.log(data);
+      
     } catch (error) {
     console.log(error);
     }
@@ -67,7 +67,7 @@ async  function handleoptsend(e){
     e.preventDefault();
   if (step===1) {
           try {
-        const res=await fetch("http://localhost:3000/user/verify-otp",{
+        const res=await fetch("https://assesment-h8vv.onrender.com/user/verify-otp",{
             method:"POST",
             headers: {
         "Content-Type": "application/json"  
@@ -76,9 +76,9 @@ async  function handleoptsend(e){
         });
 
         const data=await res.json();
-        console.log(data);
+      
         if(data?.success===true){
-            console.log("yes verified ");
+            
             navigate("/Registration",{ state: { emailid: email } });
         }
         if (data?.success===false) {

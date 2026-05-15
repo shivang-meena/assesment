@@ -14,7 +14,7 @@ export default function Login() {
     e.preventDefault();
   
           try {
-        const res=await fetch("http://localhost:3000/user/login",{
+        const res=await fetch("https://assesment-h8vv.onrender.com/user/login",{
             method:"POST",
             headers: {
         "Content-Type": "application/json"  
@@ -23,7 +23,7 @@ export default function Login() {
         });
 
         const data=await res.json();
-        console.log(data);
+        
         if(data?.success===true){
             navigate("/Welcome");
       setMsg("Loggedin");
@@ -34,7 +34,6 @@ export default function Login() {
     } catch (error) {
       setMsg(error.message);
 
-    console.log(error);
     }
   
     

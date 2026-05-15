@@ -48,7 +48,7 @@ export const registration=async (req,res)=>{
         const userdata=req.body;
         try {
             const email=userdata.email;
-            console.log("details"+email);
+           
  const duplicate = await User.findOne({ email })
         if (duplicate) {
             return res.status(400).json({success: false,message: "Email was alredy exist" })
@@ -74,7 +74,7 @@ export const registration=async (req,res)=>{
         
        await Otp.deleteOne({ email })
         } catch (error) {
-            console.log(userdata);
+         
             console.log(error);
     return res.status(500).json({  success: false,message: error.message })
         }
@@ -106,7 +106,7 @@ export const verifyotp=async (req,res)=>{
             message: "OTP verified"
         });
     } catch (error) {
-        console.log(error+"i am in veryfy otp controller ");
+      
     return res.status(500).json({ message: error.message })
     }
 }
@@ -115,8 +115,7 @@ export const verifyotp=async (req,res)=>{
 export const sendotptomail=async (req,res)=>{
     try {
 
-        console.log(req.body+" this is body fo requeit ");
-         console.log("headers:", req.headers["content-type"]);
+     
        const {email}=req.body;
        const otp = Math.floor(1000 + Math.random() * 9000).toString();
        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
