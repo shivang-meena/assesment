@@ -19,6 +19,7 @@ app.get("/",(req,res)=>{
     res.send("server was runnig ");
 });
 
-app.listen(3000,()=>{
+
+app.listen(process.env.PORT || 3000,()=>{
    console.log("srver is running ");
 });
