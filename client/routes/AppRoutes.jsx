@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Otpverification from "../src/pages/Registeration/Registeration.jsx"
-import Registration from "../src/pages/Login/Login.jsx";
+import Registration from "../src/pages/Registeration/Registeration.jsx";
 import Login from "../src/pages/Login/Login.jsx";
 import Homepage from "../src/pages/Homepage/Homepage.jsx";
 import WelcomePage from "../src/pages/Welcome/Welcome.jsx"
+import Otpverification from "../src/pages/Otpverification/Otpverification.jsx";
 
 export default function AppRoutes() {
     return (

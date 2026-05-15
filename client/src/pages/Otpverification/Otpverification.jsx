@@ -3,7 +3,7 @@ import "./Otpverification.css"
 import { useNavigate } from "react-router-dom";
 
 
-export default function EmailOtpForm() {
+export default function Otpverification() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
