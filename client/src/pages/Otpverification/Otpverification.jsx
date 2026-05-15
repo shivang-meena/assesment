@@ -54,7 +54,7 @@ async  function handleoptsend(e){
         });
 
         const data=await res.json();
-      
+       console.log(data);
     } catch (error) {
     console.log(error);
     }
@@ -78,10 +78,11 @@ async  function handleoptsend(e){
         const data=await res.json();
       
         if(data?.success===true){
-            
+          console.log(data);
             navigate("/Registration",{ state: { emailid: email } });
         }
         if (data?.success===false) {
+          console.log(data);
       setMsg({ type: "error", text: "Otp was not valid " });
         }
     } catch (error) {

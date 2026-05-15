@@ -30,7 +30,7 @@ export default function Registration() {
         if(data?.success===true){
       setMsg("registered");
          navigate("/Login");
-          
+          console.log(data);
         }
         if (data?.success===false) {
       setMsg(data?.message);
