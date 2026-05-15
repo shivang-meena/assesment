@@ -2,6 +2,9 @@ import "dotenv/config"
 import  cors from "cors"
 import express from "express";
 import mongoose from "mongoose";
+import connectDB from "./config/db.js";
+import dotenv from "dotenv";
+dotenv.config();
 const app=express();
 
 import route from "./routes/userRoutes.js";
@@ -9,16 +12,8 @@ import route from "./routes/userRoutes.js";
 app.use(cors({
     origin: "http://localhost:5173"
 }));
-
 app.use(express.json());
-main().then(()=>{
-    console.log("mongodb connectd");
-}).catch((err)=>{
-console.log(err);
-});
-async function main(){
-    await mongoose.connect("mongodb://127.0.0.1:27017/UserDetails");
-}
+connectDB();
 
 app.use("/user",route);
 
