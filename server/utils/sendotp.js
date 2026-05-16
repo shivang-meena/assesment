@@ -1,6 +1,6 @@
 
 
-import * as brevo from "@getbrevo/brevo";
+import SibApiV3Sdk from "@getbrevo/brevo";
 
 export const sendotp = async (email, otp) => {
     const apiInstance = new brevo.TransactionalEmailsApi();
