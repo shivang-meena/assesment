@@ -1,4 +1,4 @@
-// import {User} from "../models/user.js"
+
 import { Otp } from "../models/otp.js";
 import { User } from "../models/user.js";
 import { sendotp } from "../utils/sendotp.js";
@@ -10,24 +10,24 @@ export const login = async (req, res) => {
     try {
         const { email, password } = req.body
 
-        // Step 1 - Check all fields
+        
         if (!email || !password) {
             return res.status(400).json({ success: false,message: "All fields required" })
         }
 
-        // Step 2 - Check email exists
+        
         const user = await User.findOne({ email })
         if (!user) {
             return res.status(400).json({success: false, message: "Email not registered" })
         }
 
-        // Step 3 - Compare hashed password
+      
         const isMatch = await bcrypt.compare(password, user.password)
         if (!isMatch) {
             return res.status(400).json({ success: false,message: "Wrong password" })
         }
 
-        // Step 4 - Login success
+      
         return res.status(200).json({ 
             success: true,
             message: "Login successful",

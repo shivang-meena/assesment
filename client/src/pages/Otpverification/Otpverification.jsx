@@ -12,30 +12,6 @@ export default function Otpverification() {
   const [otpErr, setOtpErr] = useState(false);
   const [step,setstep]=useState(0);
 
-  // const validate = () => {
-  //   let valid = true;
-  //   setEmailErr(false);
-  //   setOtpErr(false);
-  //   setMsg(null);
-
-  //   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-  //     setEmailErr(true);
-  //     valid = false;
-  //   }
-  //   if (!otp || !/^\d{4,6}$/.test(otp)) {
-  //     setOtpErr(true);
-  //     valid = false;
-  //   }
-  //   if (!valid) {
-  //     setMsg({ type: "error", text: "Please fix the errors above." });
-  //   }
-  //   return valid;
-  // };
-
-  // const handleSubmit = () => {
-  //   if (!validate()) return;
-  //   setMsg({ type: "success", text: "✓ Verified successfully!" });
-  // };
 
  
 
