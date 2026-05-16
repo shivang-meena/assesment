@@ -1,21 +1,21 @@
-
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
-const SibApiV3Sdk = require("@getbrevo/brevo");
-
 export const sendotp = async (email, otp) => {
-    const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();  // ✅ SibApiV3Sdk not brevo
-    apiInstance.authentications['apiKey'].apiKey = process.env.BREVO_API_KEY;
-
-    const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();  // ✅ SibApiV3Sdk not brevo
-    sendSmtpEmail.to = [{ email: email }];
-    sendSmtpEmail.sender = { email: process.env.EMAIL, name: "OTP Service" };
-    sendSmtpEmail.subject = "Your OTP Verification Code";
-    sendSmtpEmail.htmlContent = `<h2>Your OTP is: <b>${otp}</b></h2><p>Valid for 5 minutes</p>`;
-
     try {
-        await apiInstance.sendTransacEmail(sendSmtpEmail);
-        console.log("otp sent successfully");
+        const response = await fetch("https://api.brevo.com/v3/smtp/email", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "api-key": process.env.BREVO_API_KEY
+            },
+            body: JSON.stringify({
+                sender: { email: process.env.EMAIL, name: "OTP Service" },
+                to: [{ email: email }],
+                subject: "Your OTP Verification Code",
+                htmlContent: `<h2>Your OTP is: <b>${otp}</b></h2><p>Valid for 5 minutes</p>`
+            })
+        });
+
+        const data = await response.json();
+        console.log("otp sent successfully", data);
     } catch (error) {
         console.log("EMAIL ERROR:", error.message);
         throw error;
