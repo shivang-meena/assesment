@@ -52,8 +52,9 @@ async  function handleoptsend(e){
     },
             body:JSON.stringify({ email })
         });
-
+     console.log("fethed ");
         const data=await res.json();
+        
        console.log(data);
     } catch (error) {
     console.log(error);
