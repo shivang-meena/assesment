@@ -1,12 +1,13 @@
+
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const SibApiV3Sdk = require("@getbrevo/brevo");
 
 export const sendotp = async (email, otp) => {
-    const apiInstance = new brevo.TransactionalEmailsApi();
+    const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();  // ✅ SibApiV3Sdk not brevo
     apiInstance.authentications['apiKey'].apiKey = process.env.BREVO_API_KEY;
 
-    const sendSmtpEmail = new brevo.SendSmtpEmail();
+    const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();  // ✅ SibApiV3Sdk not brevo
     sendSmtpEmail.to = [{ email: email }];
     sendSmtpEmail.sender = { email: process.env.EMAIL, name: "OTP Service" };
     sendSmtpEmail.subject = "Your OTP Verification Code";
